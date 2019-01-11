@@ -1,0 +1,38 @@
+{
+  "name": "kaboom.website",
+  "version": "1.0.0",
+  "description": "Kaboom Web Site",
+  "author": {
+    "name": "artemkv",
+    "email": "artemkv@gmail.com"
+  },
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/cli": "^7.1.5",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.4",
+    "copy-webpack-plugin": "^4.6.0",
+    "html-webpack-plugin": "^3.2.0",
+    "babel-loader": "^8.0.4",
+    "qunit": "^2.8.0",
+    "rimraf": "^2.6.2"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "test": "qunit",
+    "build:dev": "webpack --config webpack.dev.js",
+    "build:prod": "webpack --config webpack.prod.js",
+    "dev": "npm run clean && npm run test && npm run build:dev",
+    "prod": "npm run clean && npm run test && npm run build:prod",
+    "start": "npm run dev && webpack-dev-server --config webpack.dev.js --hot",
+    "startprod": "npm run prod && webpack-dev-server --config webpack.prod.js"
+  }
+}

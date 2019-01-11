@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Kaboom-Report</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="google-signin-scope" content="email">
+    <meta name="google-signin-client_id" content="1012739762252-agthbe2e8df58pj08q4rpcejs8ndkq7e.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+
+<body>
+        <div id="react_app"></div>
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+</body>
+
+<script>
+    function onSignIn(googleUser) {
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost:8700/signin');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function () {
+            console.log('Signed in as: ' + xhr.responseText);
+        };
+        let payload = {
+            id_token: id_token
+        };
+        xhr.send(JSON.stringify(payload));
+    }
+</script>
+</html>
