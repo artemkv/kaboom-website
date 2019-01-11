@@ -4,12 +4,25 @@
 <head>
     <title>Kaboom-Report</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
-    <meta name="google-signin-client_id" content="1012739762252-agthbe2e8df58pj08q4rpcejs8ndkq7e.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="1012739762252-agthbe2e8df58pj08q4rpcejs8ndkq7e.apps.googleusercontent.com" />
+    <script src="https://apis.google.com/js/platform.js?onload=init_gapi" async defer></script>
 </head>
 
 <body>
     <div id="react_app"></div>
+    <script>
+        // This is required to have gapi global variable properly initialized.
+        // Google does not use npm to deliver their libraries, so we need this fantastic code.
+        // We also need to keep client_id in 2 places (above in meta and below in init).
+        // This whole thing is loaded by link to platform.js above.
+        function init_gapi() {
+            gapi.load('auth2', function () {
+                gapi.auth2.init({
+                    client_id: '1012739762252-agthbe2e8df58pj08q4rpcejs8ndkq7e.apps.googleusercontent.com'
+                });
+            });
+        }
+    </script>
 </body>
 
 </html>

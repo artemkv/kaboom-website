@@ -1,9 +1,11 @@
 import React from 'react';
-import SignInButton from './SignInButton';
-import SignOutButton from './SignOutButton';
+import LoginControl from './LoginControl';
 
-export default () => <div className="client-area-outer">
-    <div className="client-area-inner">
-        <div><h1>Hello World</h1><SignInButton /><SignOutButton /></div>
+export default () => (
+    <div className="client-area-outer">
+        <div className="client-area-inner">
+            <h1>Hello World</h1>
+            <LoginControl />
+        </div>
     </div>
-</div>
+)
