@@ -9,7 +9,7 @@ class LoginButton extends React.Component {
 
     render() {
         return (
-            <div>
+            <div id='login_button'>
                 <div id='google_sign_in'></div>
             </div>
         );

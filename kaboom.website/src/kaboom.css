@@ -28,3 +28,13 @@ body, html
     width: 100%;
     height: 100%;
 }
+
+#react_app {
+    height: 100%;
+}
+
+#login_button, #logout_link {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px;
+}

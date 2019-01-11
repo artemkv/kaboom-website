@@ -7,7 +7,7 @@ class LogoutButton extends React.Component {
     }
 
     render() {
-        return <a href="#" onClick={this.signout}>Sign out</a>;
+        return <a id='logout_link' href="#" onClick={this.signout}>Sign out</a>;
     }
 
     signout(e) {

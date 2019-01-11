@@ -12,7 +12,8 @@
     <div id="react_app"></div>
     <script>
         // This is required to have gapi global variable properly initialized.
-        // Google does not use npm to deliver their libraries, so we need this fantastic code.
+        // Google does not use npm to deliver their libraries and uses global scope,
+        // so we need this fantastic code.
         // We also need to keep client_id in 2 places (above in meta and below in init).
         // This whole thing is loaded by link to platform.js above.
         function init_gapi() {
