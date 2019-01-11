@@ -1,0 +1,30 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body, html
+{
+    width: 100%;
+    height: 100%;
+    font-family: "Segoe UI", arial, sans-serif;
+    background-color: #f1f1f1;
+    overflow: hidden;
+}
+
+.client-area-outer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
+    height: 100%;
+    background-color: white;
+
+    border-right: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.client-area-inner {
+    width: 100%;
+    height: 100%;
+}

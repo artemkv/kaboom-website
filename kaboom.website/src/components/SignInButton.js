@@ -1,7 +1,7 @@
 import React from 'react';
 
 global.googleSignIn_onSignIn = function(googleUser) {
-    sessionStorage.setItem('google.id_token', googleUser.getAuthResponse().id_token);
+    sessionStorage.setItem('kaboom.google_signin.id_token', googleUser.getAuthResponse().id_token);
 }
 
 class SignInButton extends React.Component {
