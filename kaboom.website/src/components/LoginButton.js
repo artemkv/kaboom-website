@@ -30,7 +30,7 @@ class LoginButton extends React.Component {
     }
 
     onError() {
-        this.props.onLoginError();
+        // Ignore
     }
 }
 

@@ -7,11 +7,12 @@ class LoginControl extends React.Component {
         super(props);
         
         this.onLogin = this.onLogin.bind(this);
-        this.onLoginError = this.onLoginError.bind(this);
         this.onLogout = this.onLogout.bind(this);
 
         this.state = {
-            isLoggedIn: this.isAuthenticated()
+            // First time page load gapi.auth2 is not yet initialized 
+            // and isSignedIn.get() is going to return false anyway
+            isLoggedIn: false
         };
     }
 
@@ -21,10 +22,6 @@ class LoginControl extends React.Component {
     
     onLogin(id_token) {
         console.log("id_token is" + id_token);
-        this.setState({ isLoggedIn: this.isAuthenticated() });
-    }
-
-    onLoginError() {
         this.setState({ isLoggedIn: this.isAuthenticated() });
     }
 
@@ -38,7 +35,7 @@ class LoginControl extends React.Component {
         if (isLoggedIn) {
             button = <LogoutButton onLogout={this.onLogout} />;
         } else {
-            button = <LoginButton onLogin={this.onLogin} onLoginError={this.onLoginError} />;
+            button = <LoginButton onLogin={this.onLogin} />;
         }
         return button;
     }
