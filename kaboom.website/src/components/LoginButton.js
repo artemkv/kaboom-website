@@ -1,11 +1,10 @@
 import React from 'react';
-import token from '../token';
 
 class LoginButton extends React.Component {
     constructor(props) {
         super(props);
         this.onSuccess = this.onSuccess.bind(this);
-        this.onFailure = this.onFailure.bind(this);
+        this.onError = this.onError.bind(this);
     }
 
     render() {
@@ -22,17 +21,16 @@ class LoginButton extends React.Component {
             'longtitle': true,
             'theme': 'dark',
             'onsuccess': this.onSuccess,
-            'onfailure': this.onFailure
+            'onfailure': this.onError
         });
     }
 
     onSuccess(googleUser) {
-        token.saveToken(googleUser.getAuthResponse().id_token);
-        this.props.onLogin();
+        this.props.onLogin(googleUser.getAuthResponse().id_token);
     }
 
-    onFailure() {
-        token.removeToken();
+    onError() {
+        this.props.onLoginError();
     }
 }
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import token from '../token';
 
 class LogoutButton extends React.Component {
     constructor(props) {
@@ -13,7 +12,6 @@ class LogoutButton extends React.Component {
 
     signout(e) {
         e.preventDefault();
-        token.removeToken();
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(() => {
             this.props.onLogout();
