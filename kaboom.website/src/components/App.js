@@ -16,7 +16,7 @@ class App extends React.Component {
     }
 
     onLogin(id_token) {
-        console.log("id_token is" + id_token);
+        console.log("id_token is: [" + id_token + "]");
         this.setState({ isLoggedIn: true }); // TODO: authenticate with backend
     }
 
