@@ -9,11 +9,12 @@ class LoginControl extends React.Component {
         this.onLogin = this.onLogin.bind(this);
         this.onLogout = this.onLogout.bind(this);
 
+        // This state is about session with Google OpenID
         this.state = {
             // First time page load gapi.auth2 is not yet initialized 
             // and isSignedIn.get() is going to return false anyway
             isLoggedIn: false
-        };
+        };        
     }
 
     isAuthenticated() {
@@ -21,12 +22,13 @@ class LoginControl extends React.Component {
     }
     
     onLogin(id_token) {
-        console.log("id_token is" + id_token);
         this.setState({ isLoggedIn: this.isAuthenticated() });
+        this.props.onLogin(id_token);
     }
 
     onLogout() {
         this.setState({ isLoggedIn: this.isAuthenticated() });
+        this.props.onLogout();
     }
 
     render() {
