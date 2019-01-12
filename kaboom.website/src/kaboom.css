@@ -17,11 +17,6 @@ body, html
     margin-left: auto;
     margin-right: auto;
     width: 900px;
-    height: 100%;
-    background-color: white;
-
-    border-right: 1px solid #e3e3e3;
-    border-bottom: 1px solid #e3e3e3;
 }
 
 .client-area-inner {
@@ -29,12 +24,43 @@ body, html
     height: 100%;
 }
 
-#react_app {
-    height: 100%;
-}
-
 #login_button, #logout_link {
     display: flex;
     justify-content: flex-end;
     padding: 16px;
+}
+
+.panel-outer {
+    margin: 4px;
+    padding: 16px;
+    background-color: white;
+    border-right: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.crash-message {
+    font-family: "Segoe UI", arial, sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    padding: 4px 8px 2px 8px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    color: #000000;
+    text-overflow: ellipsis;
+    display: inline;
+}
+
+.crash-counter
+{
+    font-family: "Segoe UI", arial, sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    padding: 4px 8px 2px 8px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    color: #000000;
+    text-overflow: ellipsis;
+    display: inline;
 }
