@@ -64,3 +64,24 @@ body, html
     text-overflow: ellipsis;
     display: inline;
 }
+
+.appcode {
+    font-family: "Segoe UI", arial, sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    padding: 4px 8px 4px 8px;
+    margin: 8px 16px 8px 16px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    color: #000000;
+    text-overflow: ellipsis;
+}
+
+.expander {
+    padding: 8px 8px 2px 8px;
+}
+
+.details {
+    padding: 16px 8px 16px 8px;
+}

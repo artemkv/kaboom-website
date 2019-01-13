@@ -21,6 +21,8 @@ class App extends React.Component {
     }
 
     onLogin(id_token) {
+        console.log("id_token: [" + id_token + "]");
+
         this.setState({ pendingLogin: true });
         api.login(id_token)
             .then(userInfo => {
@@ -70,7 +72,7 @@ class App extends React.Component {
             <div className="client-area-inner">
                 <LoginControl onLogin={this.onLogin} onLogout={this.onLogout} />
                 {pendingLogin && <Spinner />}
-                {isLoggedIn && <h1>App Code: {appCode}</h1>}
+                {isLoggedIn && <div className="appcode">App Code: {appCode}</div>}
                 {isLoggedIn && <CrashList appCode={appCode} />}
             </div>
         </div>

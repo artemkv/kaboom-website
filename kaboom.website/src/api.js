@@ -37,3 +37,7 @@ export function logout() {
 export function getCrashes(appCode) {
     return getJson(`/crashes?appcode=${appCode}`);
 }
+
+export function getCrashDetails(crashId) {
+    return getJson(`/crash?id=${crashId}`);
+}
