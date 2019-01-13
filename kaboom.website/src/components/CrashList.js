@@ -1,40 +1,48 @@
 import React from 'react';
 import CrashListItem from './CrashListItem';
-
-// TODO: retrieve this data from the server
-let data = {
-    crashes: [
-        {
-            id: 427348768723,
-            message: "NullReference...",
-            count: 3
-        },
-        {
-            id: 398475983443,
-            message: "IllegalArgument...",
-            count: 134
-        }
-    ]
-};
+import Spinner from './Spinner';
+import * as api from '../api';
 
 class CrashList extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            items: data.crashes
+            error: null,
+            hasData: false,
+            data: []
         };
+    }
+
+    componentDidMount() {
+        api.getCrashes(this.props.appCode)
+            .then((data) => {
+                this.setState({
+                    hasData: true,
+                    data,
+                    error: null
+                });
+            })
+            .catch(error => {
+                this.setState({
+                    hasData: false,
+                    data: [],
+                    error
+                });
+            });
     }
 
     render() {
         return (
             <div className="panel-container">
                 {
-                    this.state.items.map(item => (
-                        <CrashListItem key={item.id}
-                            message={item.message}
-                            count={item.count} />
-                    ))
+                    this.state.hasData ?
+                        this.state.data.map(item => (
+                            <CrashListItem key={item.id}
+                                message={item.message}
+                                count={item.count} />
+                        )) :
+                        <Spinner />
                 }
             </div>
         );

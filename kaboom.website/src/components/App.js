@@ -1,6 +1,8 @@
 import React from 'react';
 import LoginControl from './LoginControl';
 import CrashList from './CrashList';
+import Spinner from './Spinner';
+import * as api from '../api';
 
 class App extends React.Component {
     constructor(props) {
@@ -11,25 +13,65 @@ class App extends React.Component {
 
         // This state is about session with our own backend
         this.state = {
-            isLoggedIn: false
+            pendingLogin: false,
+            error: null,
+            isLoggedIn: false,
+            userInfo: null
         };
     }
 
     onLogin(id_token) {
-        console.log("id_token is: [" + id_token + "]");
-        this.setState({ isLoggedIn: true }); // TODO: authenticate with backend
+        this.setState({ pendingLogin: true });
+        api.login(id_token)
+            .then(userInfo => {
+                this.setState({
+                    pendingLogin: false,
+                    isLoggedIn: true,
+                    userInfo,
+                    error: null
+                });
+            })
+            .catch(error => {
+                this.setState({
+                    pendingLogin: false,
+                    isLoggedIn: false,
+                    userInfo: null,
+                    error
+                });
+            });
     }
 
     onLogout() {
-        this.setState({ isLoggedIn: false }); // TODO: destroy session with backend
+        api.logout()
+            .then(() => {
+                this.setState({
+                    isLoggedIn: false,
+                    userInfo: null,
+                    error: null
+                });
+            })
+            .catch(error => {
+                this.setState({
+                    isLoggedIn: false,
+                    userInfo: null,
+                    error
+                });
+            });
     }
 
     render() {
         let isLoggedIn = this.state.isLoggedIn;
+        let pendingLogin = this.state.pendingLogin;
+        let appCode = '';
+        if (isLoggedIn) {
+            appCode = this.state.userInfo.defaultAppCode;
+        }
         return <div className="client-area-outer">
             <div className="client-area-inner">
                 <LoginControl onLogin={this.onLogin} onLogout={this.onLogout} />
-                {isLoggedIn && <CrashList />}
+                {pendingLogin && <Spinner />}
+                {isLoggedIn && <h1>App Code: {appCode}</h1>}
+                {isLoggedIn && <CrashList appCode={appCode} />}
             </div>
         </div>
     }
