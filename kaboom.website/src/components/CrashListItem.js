@@ -4,7 +4,7 @@ import React from 'react';
 /*let data = {
     id: 427348768723,
     message: "NullReference...",
-    counter: 3
+    count: 3
 };*/
 
 class CrashListItem extends React.Component {
@@ -13,7 +13,7 @@ class CrashListItem extends React.Component {
             <div className="panel-outer">
                 <div className="panel-inner">
                     <div className="crash-message">{this.props.message}</div>
-                    <div className="crash-counter">{this.props.counter}</div>
+                    <div className="crash-counter">{this.props.count}</div>
                 </div>
             </div>
         );

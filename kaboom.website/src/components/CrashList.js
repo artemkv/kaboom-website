@@ -7,12 +7,12 @@ let data = {
         {
             id: 427348768723,
             message: "NullReference...",
-            counter: 3
+            count: 3
         },
         {
             id: 398475983443,
             message: "IllegalArgument...",
-            counter: 134
+            count: 134
         }
     ]
 };
@@ -33,7 +33,7 @@ class CrashList extends React.Component {
                     this.state.items.map(item => (
                         <CrashListItem key={item.id}
                             message={item.message}
-                            counter={item.counter} />
+                            count={item.count} />
                     ))
                 }
             </div>
