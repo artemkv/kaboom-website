@@ -2,6 +2,8 @@ import React from 'react';
 import LoginControl from './LoginControl';
 import CrashList from './CrashList';
 import Spinner from './Spinner';
+import CrashStats from './CrashStats'
+import UniqueUserStats from './UniqueUserStats'
 import * as api from '../api';
 
 class App extends React.Component {
@@ -72,8 +74,13 @@ class App extends React.Component {
             <div className="client-area-inner">
                 <LoginControl onLogin={this.onLogin} onLogout={this.onLogout} />
                 {pendingLogin && <Spinner />}
-                {isLoggedIn && <div className="appcode">App Code: {appCode}</div>}
-                {isLoggedIn && <CrashList appCode={appCode} />}
+                {isLoggedIn && <div>
+                    <div className="appcode">App Code: {appCode}</div>
+                    <UniqueUserStats appCode={appCode} />
+                    <CrashStats appCode={appCode} />
+                    <div className="grouptitle">Exceptions:</div>
+                    <CrashList appCode={appCode} />
+                </div>}
             </div>
         </div>
     }

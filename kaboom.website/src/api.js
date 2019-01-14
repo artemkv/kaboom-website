@@ -41,3 +41,11 @@ export function getCrashes(appCode) {
 export function getCrashDetails(crashId) {
     return getJson(`/crash?id=${crashId}`);
 }
+
+export function getCrashStats(appCode, period, dt) {
+    return getJson(`/crashstats?appcode=${appCode}&period=${period}&dt=${dt}`);
+}
+
+export function getUniqueUserStats(appCode, period, dt) {
+    return getJson(`/uniqueuserstats?appcode=${appCode}&period=${period}&dt=${dt}`);
+}

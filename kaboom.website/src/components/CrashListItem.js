@@ -63,7 +63,7 @@ class CrashListItem extends React.Component {
                             <div className="details">
                                 <pre>{data.details}</pre>
                             </div> :
-                            <span>Loading...</span>)
+                            <span className="loading">Loading...</span>)
                     }
                 </div>
             </div >

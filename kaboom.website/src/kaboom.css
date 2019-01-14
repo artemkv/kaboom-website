@@ -38,7 +38,7 @@ body, html
     border-bottom: 1px solid #e3e3e3;
 }
 
-.crash-message {
+.crash-message, .stats-title {
     font-family: "Segoe UI", arial, sans-serif;
     font-weight: 400;
     font-size: 24px;
@@ -65,7 +65,7 @@ body, html
     display: inline;
 }
 
-.appcode {
+.appcode, .grouptitle {
     font-family: "Segoe UI", arial, sans-serif;
     font-weight: 400;
     font-size: 32px;
@@ -84,4 +84,14 @@ body, html
 
 .details {
     padding: 16px 8px 16px 8px;
+}
+
+.period-picker
+{
+    margin: 2px 4px 2px 4px;
+    padding: 4px;
+}
+
+.loading {
+    margin: 8px;
 }
