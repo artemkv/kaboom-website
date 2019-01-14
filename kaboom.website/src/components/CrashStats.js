@@ -1,4 +1,5 @@
 import React from 'react';
+import Chart from './Chart'
 import * as api from '../api';
 import * as dateTimeUtil from '../datetimeutil';
 
@@ -12,12 +13,13 @@ class CrashStats extends React.Component {
             error: null,
             hasData: false,
             data: null,
-            period: 'month'
+            period: 'month',
+            now: new Date()
         }
     }
 
-    loadData(period) {
-        api.getCrashStats(this.props.appCode, period, this.getDt(period))
+    loadData(period, now) {
+        api.getCrashStats(this.props.appCode, period, dateTimeUtil.getDt(period, now))
             .then((data) => {
                 this.setState({
                     hasData: true,
@@ -34,38 +36,25 @@ class CrashStats extends React.Component {
             });
     }
 
-    getDt(period) {
-        let now = new Date();
-        switch (period) {
-            case 'year':
-                return `${dateTimeUtil.getYear(now)}`;
-            case 'month':
-                return `${dateTimeUtil.getYear(now)}${dateTimeUtil.getMonth(now)}`;
-            case 'day':
-                return `${dateTimeUtil.getYear(now)}${dateTimeUtil.getMonth(now)}${dateTimeUtil.getDay(now)}`;
-            case 'hour':
-                return `${dateTimeUtil.getYear(now)}${dateTimeUtil.getMonth(now)}${dateTimeUtil.getDay(now)}${dateTimeUtil.getHour(now)}`;
-            default:
-                throw new Error(`Unknown period ${period}`);
-        }
-    }
-
     componentDidMount() {
-        this.loadData(this.state.period);
+        this.loadData(this.state.period, this.state.now);
     }
 
     onPeriodChanged() {
+        let newNow = new Date();
         this.setState({
             period: event.target.value,
             hasData: false,
             data: null,
-            error: null
+            error: null,
+            now: newNow
         });
-        this.loadData(event.target.value);
+        this.loadData(event.target.value, newNow);
     }
 
     render() {
         let period = this.state.period;
+        let dateTime = this.state.now;
         let hasData = this.state.hasData;
         let data = this.state.data;
         return (
@@ -82,7 +71,7 @@ class CrashStats extends React.Component {
                         <div>
                             {(hasData ?
                                 <div className="details">
-                                    <pre>{JSON.stringify(data)}</pre>
+                                    <Chart period={period} dateTime={dateTime} data={data} />
                                 </div> :
                                 <span className="loading">Loading...</span>)}
                         </div>

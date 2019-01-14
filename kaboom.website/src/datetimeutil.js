@@ -31,3 +31,18 @@ export function getHour(date) {
     }
     return hour;
 }
+
+export function getDt(period, date) {
+    switch (period) {
+        case 'year':
+            return `${getYear(date)}`;
+        case 'month':
+            return `${getYear(date)}${getMonth(date)}`;
+        case 'day':
+            return `${getYear(date)}${getMonth(date)}${getDay(date)}`;
+        case 'hour':
+            return `${getYear(date)}${getMonth(date)}${getDay(date)}${getHour(date)}`;
+        default:
+            throw new Error(`Unkdaten period ${period}`);
+    }
+}
