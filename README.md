@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/artemkv/kaboom-website.svg?style=svg)](https://circleci.com/gh/artemkv/kaboom-website)
+
 Kaboom Web Site
 
 # Build
