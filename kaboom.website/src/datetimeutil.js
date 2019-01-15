@@ -46,3 +46,31 @@ export function getDt(period, date) {
             throw new Error(`Unkdaten period ${period}`);
     }
 }
+
+function charRange(from, to) {
+    let arr = [];
+    for (let i = from; i <= to; i++) {
+        if (i < 10) {
+            arr.push('0' + i.toString());
+        } else {
+            arr.push(i.toString());
+        }
+    }
+    return arr;
+}
+
+export function getPeriodDts(period, date) {
+    let startDt = getDt(period, date);
+    switch (period) {
+        case 'year':
+            return charRange(1, 12).map(x => startDt + x);
+        case 'month':
+            return charRange(1, 31).map(x => startDt + x);
+        case 'day':
+            return charRange(0, 24).map(x => startDt + x);
+        case 'hour':
+            return charRange(1, 60).map(x => startDt + x);
+        default:
+            throw new Error(`Unknown period ${period}`);
+    }
+}

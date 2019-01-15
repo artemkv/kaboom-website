@@ -1,5 +1,5 @@
 import React from 'react';
-import Chart from './Chart'
+import StatsChart from './StatsChart'
 import * as api from '../api';
 import * as dateTimeUtil from '../datetimeutil';
 
@@ -71,7 +71,7 @@ class CrashStats extends React.Component {
                         <div>
                             {(hasData ?
                                 <div className="details">
-                                    <Chart period={period} dateTime={dateTime} data={data} />
+                                    <StatsChart chartId="crashStats" period={period} dateTime={dateTime} data={data} />
                                 </div> :
                                 <span className="loading">Loading...</span>)}
                         </div>
