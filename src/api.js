@@ -1,4 +1,5 @@
-const baseUrl = 'http://localhost:8700';
+const baseUrl = 'http://192.168.99.101:30700'; // TODO: where to configure it?
+// const baseUrl = 'http://localhost:8700'; // TODO: where to configure it?
 
 function getJson(endpoint) {
     return fetch(
@@ -38,8 +39,8 @@ export function getCrashes(appCode) {
     return getJson(`/crashes?appcode=${appCode}`);
 }
 
-export function getCrashDetails(crashId) {
-    return getJson(`/crash?id=${crashId}`);
+export function getCrashDetails(appCode, crashId) {
+    return getJson(`/crash?appcode=${appCode}&id=${crashId}`);
 }
 
 export function getCrashStats(appCode, period, dt) {

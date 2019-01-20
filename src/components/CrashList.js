@@ -40,6 +40,7 @@ class CrashList extends React.Component {
                         this.state.data.map(item => (
                             <CrashListItem
                                 key={item.id}
+                                appCode={this.props.appCode}
                                 id={item.id}
                                 message={item.message}
                                 count={item.count} />

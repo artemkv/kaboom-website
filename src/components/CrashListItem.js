@@ -21,7 +21,7 @@ class CrashListItem extends React.Component {
         // If toggling details on
         if (this.state.showDetails == false) {
             if (!this.state.crash) {
-                api.getCrashDetails(this.props.id)
+                api.getCrashDetails(this.props.appCode, this.props.id)
                     .then((data) => {
                         data.details = atob(data.details);
 
