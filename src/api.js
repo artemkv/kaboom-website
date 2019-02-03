@@ -1,5 +1,7 @@
-const baseUrl = 'http://192.168.99.101:30700'; // TODO: where to configure it?
-// const baseUrl = 'http://localhost:8700'; // TODO: where to configure it?
+//const baseUrl = 'http://192.168.99.101:30700'; // TODO: where to configure it?
+//const baseUrl = 'http://localhost:8707'; // TODO: where to configure it?
+//const baseUrl = 'http://192.168.99.100:8700'; // TODO: where to configure it?
+const baseUrl = 'https://api.kaboom-report.com:8700'; // TODO: where to configure it?
 
 function getJson(endpoint) {
     return fetch(
