@@ -4,6 +4,7 @@ import CrashList from './CrashList';
 import Spinner from './Spinner';
 import CrashStats from './CrashStats'
 import UniqueUserStats from './UniqueUserStats'
+import AppCode from './AppCode'
 import * as api from '../api';
 
 class App extends React.Component {
@@ -75,7 +76,7 @@ class App extends React.Component {
                 <LoginControl onLogin={this.onLogin} onLogout={this.onLogout} />
                 {pendingLogin && <Spinner />}
                 {isLoggedIn && <div>
-                    <div className="appcode">App Code: {appCode}</div>
+                    <AppCode appCode={appCode} />
                     <UniqueUserStats appCode={appCode} />
                     <CrashStats appCode={appCode} />
                     <div className="grouptitle">Exceptions:</div>

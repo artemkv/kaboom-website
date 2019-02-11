@@ -75,6 +75,7 @@ body, html
     box-sizing: border-box;
     color: #000000;
     text-overflow: ellipsis;
+    cursor: pointer;
 }
 
 .expander {
