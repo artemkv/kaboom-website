@@ -96,3 +96,23 @@ body, html
 .loading {
     margin: 8px;
 }
+
+.about {
+    font-family: "Segoe UI", arial, sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    padding: 4px 8px 4px 8px;
+    margin: 8px 16px 8px 16px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    color: #000000;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.about_video {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 16px;
+}

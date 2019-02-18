@@ -82,6 +82,13 @@ class App extends React.Component {
                     <div className="grouptitle">Exceptions:</div>
                     <CrashList appCode={appCode} />
                 </div>}
+                {!isLoggedIn && <div>
+                    <div className="about">kaboom-report.com is a demo cloud service that allows to track unique users and crashes of your mobile application.</div>
+                    <div className="about_video">
+                        <iframe width="900" height="506" src="https://www.youtube.com/embed/xA_uPmSHj6c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                }
             </div>
         </div>
     }
